@@ -23,3 +23,5 @@
 
 # Test solc versions
 solc-bin/
+
+node_modules/
