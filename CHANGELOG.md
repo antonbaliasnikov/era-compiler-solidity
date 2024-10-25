@@ -1,5 +1,22 @@
 # The `zksolc` changelog
 
+## 1.5.7
+
+### Patch Changes
+
+- d6b04ef: Introduce changesets support
+
+  You can use custom markdown:
+
+  ```bash
+  npx changeset
+  ```
+
+  - first
+  - second
+
+- 51580b3: Add changeset release workflow
+
 ## [Unreleased]
 
 ### Added
