@@ -1,0 +1,11 @@
+{
+  "name": "era-compiler-solidity",
+  "version": "1.5.6",
+  "description": "ZKSync compiler for Solidity",
+  "keywords": [],
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "@changesets/cli": "^2.27.9"
+  }
+}
