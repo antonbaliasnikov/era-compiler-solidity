@@ -21,11 +21,29 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Install Rust
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Install workspaces
+        run: cargo install cargo-workspaces
+
+      - name: Define next release version
+        id: next-release
+        shell: 'bash -ex {0}'
+        run: |
+          npx changeset status --output=release-status.json
+          NEXT_RELEASE_VERSION=$(jq -r '.releases[] | select(.name == "era-compiler-solidity") | .newVersion' release-status.json)
+          NEXT_RELEASE_TYPE=$(jq -r '.releases[] | select(.name == "era-compiler-solidity") | .type' release-status.json)
+          echo "version=${NEXT_RELEASE_VERSION}" >> "${GITHUB_OUTPUT}"
+          echo "type=${NEXT_RELEASE_TYPE}" >> "${GITHUB_OUTPUT}"
+
       - name: Create Release Pull Request
         id: changesets
-        uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: changesets/action@v1
+        with:
+          version: cargo workspaces version ${{ steps.next-release.outputs.type }} --no-git-commit --yes && npx changeset version
 
       - name: Publish
         if: steps.changesets.outputs.hasChangesets == 'false'
