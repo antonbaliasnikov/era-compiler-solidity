@@ -1,0 +1,36 @@
+{
+  "changesets": [
+    {
+      "releases": [
+        {
+          "name": "era-compiler-solidity",
+          "type": "patch"
+        }
+      ],
+      "summary": "Introduce changesets support\n\nYou can use custom markdown:\n```bash\nnpx changeset\n```\n\n* first\n* second",
+      "id": "friendly-readers-wave"
+    },
+    {
+      "releases": [
+        {
+          "name": "era-compiler-solidity",
+          "type": "patch"
+        }
+      ],
+      "summary": "Add changeset release workflow",
+      "id": "khaki-actors-speak"
+    }
+  ],
+  "releases": [
+    {
+      "name": "era-compiler-solidity",
+      "type": "patch",
+      "oldVersion": "1.5.6",
+      "changesets": [
+        "friendly-readers-wave",
+        "khaki-actors-speak"
+      ],
+      "newVersion": "1.5.7"
+    }
+  ]
+}
