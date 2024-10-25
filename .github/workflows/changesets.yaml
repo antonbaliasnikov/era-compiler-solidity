@@ -45,6 +45,9 @@ jobs:
         uses: changesets/action@v1
         with:
           version: yarn bump-version
+          commit: "release: v${{ steps.next-release.outputs.version }}"
+          title: "release: v${{ steps.next-release.outputs.version }}"
+          createGithubReleases: true # maybe set to false with our own release process
 
       - name: Publish
         if: steps.changesets.outputs.hasChangesets == 'false'
